@@ -1,4 +1,4 @@
-import { listToObject, dateToYMD, getColor, getAllDays } from "./utils"
+import { listToMap, dateToYMD, getColor, getAllDays } from "./utils"
 
 it("should convert a list of transactions to an object", () => {
   const transactions = [
@@ -12,7 +12,7 @@ it("should convert a list of transactions to an object", () => {
     "2019-01-02": -1
   }
 
-  expect(listToObject(transactions)).toStrictEqual(expectedObject)
+  expect(listToMap(transactions)).toStrictEqual(expectedObject)
 })
 
 it("should convert a date to YMD", () => {

@@ -2,9 +2,9 @@ import React from "react"
 import "./App.css"
 import { CalendarHeatmap } from "./components/CalendarHeatmap/calendar-heatmap"
 import transactionsList from "./data/evezy-transactions.json"
-import { listToObject } from "./components/CalendarHeatmap/utils"
+import { listToMap } from "./components/CalendarHeatmap/utils"
 
-const transactions = listToObject(transactionsList)
+const transactions = listToMap(transactionsList)
 
 const App: React.FC = () => {
   return (

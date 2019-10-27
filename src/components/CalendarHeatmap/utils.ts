@@ -1,20 +1,22 @@
 import { Transaction, TransactionsMap } from "./calendar-heatmap"
 
-export const listToObject = (list: Transaction[]): TransactionsMap =>
-  list.reduce((object: TransactionsMap, transaction: Transaction) => {
+export const listToMap = (list: Transaction[]): TransactionsMap => {
+  const map: TransactionsMap = {}
+
+  list.forEach((transaction: Transaction) => {
     const amount =
       transaction.transactionType === "success"
         ? +transaction.amount
         : -transaction.amount
 
-    return {
-      ...object,
-      [transaction.date]:
-        object[transaction.date] !== undefined
-          ? object[transaction.date] + amount
-          : amount
-    }
-  }, {})
+    map[transaction.date] =
+      map[transaction.date] !== undefined
+        ? map[transaction.date] + amount
+        : amount
+  })
+
+  return map
+}
 
 export const getAllDays = (year: number) => {
   const start = new Date(`01/01/${year}`)
